@@ -1,0 +1,86 @@
+.inputWrapper {
+  --color: #737f8f;
+
+  background: #eef0f1;
+  font-size: 12px;
+  padding: 0 8px;
+  position: relative;
+  display: flex;
+  color: var(--color);
+  border-radius: 4px;
+  overflow: hidden;
+
+  input {
+    color: inherit;
+    font-size: 12px;
+    display: block;
+    appearance: none;
+    outline: none;
+    background: none;
+    box-shadow: none;
+    border: none;
+    line-height: 1.8;
+    font-family: Arial, Helvetica, Helvetica Neue, serif;
+    flex: 1 1 auto;
+  }
+
+  ::-webkit-input-placeholder {
+    color: var(--color);
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+    flex: 0 0 16px;
+    transition: 0.15s;
+  }
+
+  .searchIcon {
+    flex: 0 0 0;
+    margin: 8px 8px 8px 0;
+  }
+
+  .addIcon {
+    flex: 0 0 0;
+    margin: 8px 0 8px 8px;
+  }
+
+  &.showAddIcon {
+    .addIcon {
+      flex: 0 0 16px;
+    }
+  }
+  &.showSearchIcon {
+    .searchIcon {
+      flex: 0 0 16px;
+    }
+  }
+
+  p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    line-height: 1.8;
+    color: inherit;
+  }
+
+  .display {
+    color: #696969;
+  }
+
+  .placeholder {
+    color: #9c9c9c;
+  }
+
+  &.editting::after {
+    content: '';
+    border: 4px solid #f8f8ff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+}

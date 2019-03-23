@@ -1,0 +1,39 @@
+.display {
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 1.8;
+  font-size: 14px;
+  cursor: pointer;
+  &.done {
+    color: #c9c9c9;
+    text-decoration: line-through;
+  }
+}
+
+.editableName {
+  margin-bottom: 12px;
+  color: #393939;
+  padding: 0 8px;
+
+  &:hover {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+
+  input {
+    color: inherit;
+    font-size: 14px;
+    width: 100%;
+    display: block;
+    appearance: none;
+    outline: none;
+    background: none;
+    box-shadow: none;
+    border: none;
+    line-height: 1.8;
+    font-family: Arial, Helvetica, Helvetica Neue, serif;
+    flex: 1 1 auto;
+  }
+}

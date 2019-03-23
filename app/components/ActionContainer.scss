@@ -1,0 +1,37 @@
+.actionContainer {
+  --background: white;
+
+  background: var(--background);
+  margin-top: 16px;
+  position: relative;
+  padding: 16px 8px 0;
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+
+  &::before {
+    --size: 10px;
+
+    content: '';
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    left: calc(50% + var(--size) * -0.5);
+    top: calc(var(--size) * -0.5);
+    transform-origin: 50% 50%;
+    transform: rotate(45deg);
+    background: var(--background);
+  }
+
+  .children {
+    flex: 1 1 auto;
+  }
+
+  .menu {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+}

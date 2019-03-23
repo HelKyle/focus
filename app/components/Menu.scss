@@ -1,0 +1,34 @@
+.menu {
+  background: #333a40;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 40px;
+  height: 40px;
+
+  svg {
+    transition: 0.15s;
+    width: 16px;
+    fill: white;
+
+    &:hover {
+      fill: #4791ff;
+    }
+  }
+
+  .active {
+    svg {
+      fill: #4791ff;
+    }
+  }
+}
+
+button {
+  appearance: none;
+  border: none;
+  background: transparent;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
