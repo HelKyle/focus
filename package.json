@@ -1,7 +1,7 @@
 {
   "name": "focus",
   "productName": "focus",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "一款高颜值的🍅工作软件，二十五分钟专注做一件事。",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",

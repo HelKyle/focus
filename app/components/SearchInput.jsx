@@ -14,7 +14,8 @@ type Props = {
 
 type State = {
   value: string,
-  editting: boolean
+  editting: boolean,
+  typing: boolean
 };
 
 export default class Input extends React.Component<Props, State> {
@@ -23,6 +24,7 @@ export default class Input extends React.Component<Props, State> {
 
     const { defaultValue } = props;
     this.state = {
+      typing: false,
       editting: false,
       value: defaultValue || ''
     };
@@ -68,12 +70,26 @@ export default class Input extends React.Component<Props, State> {
   };
 
   onKeyUp = (e: any) => {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 && !this.state.typing) {
       if (this.props.onSubmit) {
         this.props.onSubmit(this.state.value);
       }
     }
   };
+
+  onCompositionStart = () => {
+    this.setState({
+      typing: true,
+    });
+  }
+
+  onCompositionEnd = () => {
+    setTimeout(() => {
+      this.setState({
+        typing: false,
+      });
+    }, 100)
+  }
 
   handleClickAdd = () => {
     if (this.props.onSubmit) {
@@ -98,6 +114,8 @@ export default class Input extends React.Component<Props, State> {
             onBlur={this.onBlur}
             onFocus={this.onFocus}
             onChange={this.onChange}
+            onCompositionStart={this.onCompositionStart}
+            onCompositionEnd={this.onCompositionEnd}
             placeholder={this.props.placeholder}
           />
         }

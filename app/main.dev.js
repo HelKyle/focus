@@ -11,8 +11,8 @@
  * @flow
  */
 import { app, BrowserWindow, Tray, ipcMain, Menu, MenuItem } from 'electron';
-
 import * as path from 'path';
+import MenuBuilder from './menu';
 
 let mainWindow: BrowserWindow = null;
 let tray: Tray = null;
@@ -47,6 +47,10 @@ app.on('window-all-closed', () => {
   }
 });
 
+app.on('activate', () => {
+  toggleWindowVisible();
+})
+
 app.on('ready', async () => {
   if (
     process.env.NODE_ENV === 'development' ||
@@ -57,6 +61,9 @@ app.on('ready', async () => {
   createWindow();
   createTray();
   showWindow();
+
+  const menuBuilder = new MenuBuilder(mainWindow);
+  menuBuilder.buildMenu();
 });
 
 const createTray = () => {
@@ -144,25 +151,4 @@ ipcMain.once('store-ready', event => {
     }, 1000);
   };
   run();
-});
-
-const menu = new Menu();
-menu.append(
-  new MenuItem({
-    label: '退出',
-    click: () => {
-      app.quit();
-    }
-  })
-);
-
-app.on('browser-window-created', (event, win) => {
-  win.webContents.on('context-menu', (e, params) => {
-    menu.popup(win, params.x, params.y);
-  });
-});
-
-ipcMain.on('show-context-menu', event => {
-  const win = BrowserWindow.fromWebContents(event.sender);
-  menu.popup(win);
 });
