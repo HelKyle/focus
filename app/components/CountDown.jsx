@@ -33,7 +33,7 @@ export default function(props: Props) {
   return (
     <div className={styles.countDownWrapper}>
       <div className={styles.action} onClick={onToggleCounting}>
-        {counting ? <Pause /> : <Play />}
+        {counting ? <Pause fill="#dfe4ea" /> : <Play fill="#2ed573" />}
       </div>
       <svg
         className={styles.countDown}

@@ -61,7 +61,7 @@ export default class Home extends Component<Props, State> {
   };
 
   handleSubmit = (value: string) => {
-    if (value) {
+    if (value && value.trim()) {
       this.createTask(value);
       this.handleSeachChange('');
     }

@@ -34,7 +34,7 @@ export default function Home(props: Props) {
       <EditableLabel
         done={done}
         value={name}
-        onSubmit={value => dispatch(updateTaskName(value))}
+        onSubmit={value => value && value.trim() && dispatch(updateTaskName(value))}
       />
       <CountDown
         plan={plan}

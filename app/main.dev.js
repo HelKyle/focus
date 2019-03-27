@@ -48,7 +48,7 @@ app.on('window-all-closed', () => {
 });
 
 app.on('activate', () => {
-  showWindow();
+  toggleWindowVisible();
 })
 
 app.on('ready', async () => {
