@@ -1,20 +1,31 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import * as classnames from 'classnames';
-import { ipcRenderer } from 'electron';
+import { remote } from 'electron';
 import * as styles from './Menu.scss';
 import Play from './svgrs/play-shape';
 import List from './svgrs/list';
 import Settings from './svgrs/settings';
 import routes from '../constants/routes';
 
+const { Menu, MenuItem } = remote;
+
 type Props = {
   className: string
 };
 
-export default function Menu(props: Props) {
+export default function (props: Props) {
   const handleSettingClick = () => {
-    ipcRenderer.send('show-context-menu');
+    const menu = new Menu();
+    menu.append(
+      new MenuItem({
+        label: '退出',
+        click: () => {
+          remote.app.quit();
+        }
+      })
+    );
+    menu.popup({ window: remote.getCurrentWindow() })
   };
 
   const cls = classnames(props.className, styles.menu);
